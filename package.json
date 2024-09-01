@@ -1,0 +1,23 @@
+{
+  "name": "monorepo-template",
+  "private": true,
+  "workspaces": ["packages/*", "apps/*", "packages/email/*"],
+  "scripts": {
+    "build": "turbo build",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo clean",
+    "dev": "turbo dev --parallel",
+    "test": "turbo test --parallel",
+    "start:www": "turbo start --filter=@monorepo-template/www",
+    "dev:website": "turbo dev --filter=@monorepo-template/www ",
+    "format": "biome format --write .",
+    "lint": "turbo lint && manypkg check",
+    "typecheck": "turbo typecheck"
+  },
+  "dependencies": {
+    "turbo": "^2.0.14",
+    "@biomejs/biome": "^1.8.3",
+    "typescript": "^5.5.4"
+  },
+  "packageManager": "bun@1.1.25"
+}
